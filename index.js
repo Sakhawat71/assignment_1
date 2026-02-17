@@ -1,17 +1,8 @@
-/* ============================================================
-   SwiftCart — index.js
-   ============================================================ */
-
-// =====================
-//  STATE
-// =====================
 let allProducts = [];
 let cart = JSON.parse(localStorage.getItem('swiftcart') || '[]');
 let currentModal = null;
 
-// =====================
 //  INIT
-// =====================
 document.addEventListener('DOMContentLoaded', () => {
     generateDots();
     fetchCategories();
@@ -19,15 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchTopRated();
     renderCart();
 
-    // Cart button in navbar
     document.getElementById('cartBtn').addEventListener('click', openCart);
 
-    // Hamburger toggle
     document.getElementById('hamburger').addEventListener('click', () => {
         document.getElementById('mobileMenu').classList.toggle('open');
     });
 
-    // "All Products" category click (delegated)
     document.addEventListener('click', e => {
         if (e.target.dataset.cat === 'all') {
             document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
@@ -36,15 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // ESC key closes modal / cart
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape') { closeModal(); closeCart(); }
     });
 });
 
-// =====================
+
 //  FLOATING DOTS (HERO)
-// =====================
 function generateDots() {
     const container = document.getElementById('heroDots');
     for (let i = 0; i < 18; i++) {
@@ -63,16 +49,14 @@ function generateDots() {
     }
 }
 
-// =====================
+
 //  MOBILE MENU
-// =====================
 function closeMobile() {
     document.getElementById('mobileMenu').classList.remove('open');
 }
 
-// =====================
+
 //  API — FETCH CATEGORIES
-// =====================
 async function fetchCategories() {
     try {
         const res = await fetch('https://fakestoreapi.com/products/categories');
@@ -92,9 +76,8 @@ async function fetchCategories() {
     }
 }
 
-// =====================
+
 //  API — FETCH ALL PRODUCTS
-// =====================
 async function fetchAllProducts() {
     try {
         const res = await fetch('https://fakestoreapi.com/products');
@@ -106,9 +89,8 @@ async function fetchAllProducts() {
     }
 }
 
-// =====================
+
 //  API — FETCH TOP RATED
-// =====================
 async function fetchTopRated() {
     try {
         const res = await fetch('https://fakestoreapi.com/products');
@@ -123,9 +105,8 @@ async function fetchTopRated() {
     }
 }
 
-// =====================
+
 //  RENDER — PRODUCTS GRID
-// =====================
 function renderProducts(products) {
     const grid = document.getElementById('products-grid');
     const count = document.getElementById('productsCount');
@@ -159,16 +140,14 @@ function renderProducts(products) {
     </div>
   `).join('');
 
-    // Mark already-added items
     cart.forEach(item => {
         const btn = document.getElementById(`card-btn-${item.id}`);
         if (btn) btn.classList.add('added');
     });
 }
 
-// =====================
+
 //  RENDER — TOP RATED
-// =====================
 function renderTopRated(products) {
     const grid = document.getElementById('topRatedGrid');
     grid.innerHTML = products.map(p => `
@@ -188,9 +167,8 @@ function renderTopRated(products) {
   `).join('');
 }
 
-// =====================
+
 //  HELPER — STAR RATING
-// =====================
 function renderStars(rate) {
     const full = Math.floor(rate);
     const half = rate - full >= 0.5 ? 1 : 0;
@@ -198,9 +176,8 @@ function renderStars(rate) {
     return '★'.repeat(full) + (half ? '½' : '') + '☆'.repeat(empty);
 }
 
-// =====================
+
 //  CATEGORY FILTER
-// =====================
 function filterByCategory(cat, btn) {
     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
@@ -214,15 +191,13 @@ function filterByCategory(cat, btn) {
         .catch(() => renderProducts(allProducts.filter(p => p.category === cat)));
 }
 
-// =====================
+
 //  MODAL
-// =====================
 async function openModal(id) {
     const overlay = document.getElementById('modalOverlay');
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
 
-    // Use cached data if possible
     let product = allProducts.find(p => p.id === id);
     if (!product) {
         try {
@@ -280,9 +255,8 @@ function buyNow() {
     openCart();
 }
 
-// =====================
+
 //  CART — CORE LOGIC
-// =====================
 function isInCart(id) {
     return cart.some(i => i.id === id);
 }
@@ -345,9 +319,8 @@ function updateCartCount() {
     document.getElementById('cartCount').textContent = total;
 }
 
-// =====================
+
 //  CART — RENDER
-// =====================
 function renderCart() {
     const container = document.getElementById('cartItems');
     const footer = document.getElementById('cartFooter');
@@ -387,9 +360,8 @@ function renderCart() {
     document.getElementById('cartTotal').textContent = `$${subtotal.toFixed(2)}`;
 }
 
-// =====================
+
 //  CART — OPEN / CLOSE
-// =====================
 function openCart() {
     document.getElementById('cartSidebar').classList.add('open');
     document.getElementById('cartOverlay').classList.add('open');
@@ -407,9 +379,8 @@ function handleCheckout() {
     closeCart();
 }
 
-// =====================
+
 //  NEWSLETTER
-// =====================
 function handleSubscribe(e) {
     e.preventDefault();
     const email = document.getElementById('emailInput').value;
@@ -417,9 +388,8 @@ function handleSubscribe(e) {
     document.getElementById('emailInput').value = '';
 }
 
-// =====================
+
 //  TOAST NOTIFICATIONS
-// =====================
 function showToast(msg) {
     const container = document.getElementById('toastContainer');
     const toast = document.createElement('div');

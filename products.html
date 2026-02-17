@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SwiftCart - Best Collection For You</title>
+    <title>SwiftCart - Our Products</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-    <!-- NAVBAR-->
+    <!-- NAVBAR -->
     <nav id="navbar">
         <div class="nav-logo">SwiftCart</div>
 
         <ul class="nav-links">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html" class="active">Products</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
         </ul>
 
         <div class="nav-right">
@@ -36,82 +36,37 @@
     <div class="mobile-menu" id="mobileMenu">
         <a href="index.html" onclick="closeMobile()">Home</a>
         <a href="products.html" onclick="closeMobile()">Products</a>
-        <a href="#about" onclick="closeMobile()">About</a>
-        <a href="#contact" onclick="closeMobile()">Contact</a>
+        <a href="index.html#about" onclick="closeMobile()">About</a>
+        <a href="index.html#contact" onclick="closeMobile()">Contact</a>
     </div>
 
-    <!-- HERO-->
-    <section id="hero">
-        <div class="hero-bg-img"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1 class="hero-title">Best Collection For You</h1>
-            <p class="hero-desc">
-                Discover the latest trends in fashion, electronics, and more.
-                Shop with confidence and style at SwiftCart.
-            </p>
-            <a href="products.html" class="hero-btn">Shop Now</a>
-        </div>
-    </section>
+    <!-- PRODUCTS SECTION -->
+    <section id="products-page">
 
-    <!-- WHY CHOOSE US-->
-    <section id="features">
-        <div class="section-header center">
-            <h2 class="section-title">Why Choose Us</h2>
-            <p class="section-desc">
-                We provide the best shopping experience with top-notch services.
-            </p>
+        <h1 class="page-title">Our Products</h1>
+
+        <!-- Category Filter -->
+        <div class="categories-wrap" id="categoriesWrap">
+            <button class="cat-btn active" data-cat="all">All</button>
         </div>
 
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon-wrap">🚚</div>
-                <div class="feature-title">Fast Delivery</div>
-                <p class="feature-text">
-                    Get your orders delivered to your doorstep quickly and efficiently.
-                </p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon-wrap">🎧</div>
-                <div class="feature-title">24/7 Support</div>
-                <p class="feature-text">
-                    Our support team is available around the clock to assist you.
-                </p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon-wrap">🔒</div>
-                <div class="feature-title">Secure Payment</div>
-                <p class="feature-text">
-                    Experience safe and secure transactions with our encrypted payment systems.
-                </p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon-wrap">↩️</div>
-                <div class="feature-title">Easy Returns</div>
-                <p class="feature-text">
-                    Not satisfied? Return your products easily within 30 days.
-                </p>
-            </div>
+        <!-- Count + Grid -->
+        <div class="products-meta">
+            <span class="products-count" id="productsCount">Loading...</span>
         </div>
-    </section>
 
-    <!-- TRENDING NOW-->
-    <section id="trending">
-        <div class="section-header">
-            <h2 class="section-title">Trending Now</h2>
-        </div>
-        <div class="trending-grid" id="trending-grid">
+        <div id="products-grid">
             <div class="spinner-wrap">
                 <div class="spinner"></div>
             </div>
         </div>
+
     </section>
 
-    <!-- FOOTER-->
-    <footer id="contact">
+    <!-- FOOTER -->
+    <footer>
         <div class="footer-grid">
 
-            <!-- Brand -->
             <div>
                 <div class="footer-logo">SwiftCart</div>
                 <p class="footer-brand-text">
@@ -120,19 +75,17 @@
                 </p>
             </div>
 
-            <!-- Quick Links -->
             <div>
                 <div class="footer-col-title">Quick Links</div>
                 <ul class="footer-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="products.html">Products</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
             </div>
 
-            <!-- Support -->
-            <div id="about">
+            <div>
                 <div class="footer-col-title">Support</div>
                 <ul class="footer-links">
                     <li><a href="#">FAQ</a></li>
@@ -142,7 +95,6 @@
                 </ul>
             </div>
 
-            <!-- Newsletter -->
             <div>
                 <div class="footer-col-title">Subscribe to Our Newsletter</div>
                 <p class="footer-newsletter-text">
@@ -168,7 +120,7 @@
         </div>
     </footer>
 
-    <!-- PRODUCT MODAL-->
+    <!-- PRODUCT MODAL -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
         <div class="modal">
             <div class="modal-img-side">
@@ -189,7 +141,7 @@
         </div>
     </div>
 
-    <!-- CART SIDEBAR-->
+    <!-- CART SIDEBAR -->
     <div class="cart-backdrop" id="cartBackdrop" onclick="closeCart()"></div>
 
     <div class="cart-sidebar" id="cartSidebar">
@@ -216,7 +168,7 @@
         </div>
     </div>
 
-    <!-- TOAST STACK-->
+    <!-- TOAST -->
     <div class="toast-stack" id="toastStack"></div>
 
     <script src="index.js"></script>

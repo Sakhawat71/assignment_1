@@ -369,7 +369,7 @@ function closeCart() {
 }
 
 function handleCheckout() {
-    showToast('🎉 Order placed! (Demo)');
+    showToast('🎉 Order placed!');
     clearCart();
     closeCart();
 }

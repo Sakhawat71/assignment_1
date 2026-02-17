@@ -57,7 +57,8 @@ numbers.forEach(num => console.log(num)); // 1, 2, 3
 
 ---
 
-### ৩) `==` এবং `===`-এর মধ্যে পার্থক্য কী?
+### 3) What is the difference between `==` and `===`?
+
 
 **`==`** হলো **Loose Equality Operator** বা **Abstract Equality Operator**। এটি তুলনার সময় টাইপ কনভার্শন (type coercion) করে নেয়, অর্থাৎ দুটি ভিন্ন টাইপের মান তুলনা করার আগে একই টাইপে রূপান্তর করে।
 
@@ -79,7 +80,7 @@ console.log(5 === 5);     // true
 
 ---
 
-### ৪) API ডেটা ফেচ করার ক্ষেত্রে `async`/`await`-এর গুরুত্ব কী?
+### 4) What is the significance of `async`/`await` in fetching API data?
 
 জাভাস্ক্রিপ্ট একটি **single-threaded** ভাষা। API কল একটি **asynchronous** অপারেশন — এটি সময় নেয় এবং সাথে সাথে ফলাফল পাওয়া যায় না।
 
@@ -115,7 +116,7 @@ async function fetchProducts() {
 
 ---
 
-### ৫) জাভাস্ক্রিপ্টে Scope-এর ধারণা ব্যাখ্যা কর (Global, Function, Block)
+### 5) Explain the concept of Scope in JavaScript (Global, Function, Block).
 
 **Scope** হলো কোডের একটি নির্দিষ্ট অংশ যেখানে একটি ভেরিয়েবল **অ্যাক্সেসযোগ্য** বা **দৃশ্যমান**।
 
